@@ -4,6 +4,8 @@ import club.minnced.discord.webhook.WebhookClient;
 import club.minnced.discord.webhook.WebhookClientBuilder;
 import me.thecuddlybear.discordlink.commands.SetWebhookUrl;
 import me.thecuddlybear.discordlink.events.GuildMessageReceived;
+import me.thecuddlybear.discordlink.events.onPlayerDeath;
+import me.thecuddlybear.discordlink.events.onPlayerJoinLeave;
 import me.thecuddlybear.discordlink.events.onPlayerMessage;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
@@ -27,6 +29,8 @@ public final class DiscordLink extends JavaPlugin {
         // getCommand("webhook").setExecutor(new SetWebhookUrl());
         getConfig().options().copyDefaults();
         saveDefaultConfig();
+        getServer().getPluginManager().registerEvents(new onPlayerDeath(), this);
+        getServer().getPluginManager().registerEvents(new onPlayerJoinLeave(), this);
         if(getConfig().getString("webhookURL").startsWith("https://discordapp.com/api/webhooks/")){
             getServer().getPluginManager().registerEvents(new onPlayerMessage(), this);
         }else {
