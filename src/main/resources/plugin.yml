@@ -1,0 +1,9 @@
+name: DiscordLink
+version: ${project.version}
+main: me.thecuddlybear.discordlink.DiscordLink
+api-version: 1.17
+authors: [ TheCuddlyBear ]
+description: Link your minecraft chat with a discord channel
+commands:
+  webhook:
+    description: Sets the discord webhook url
