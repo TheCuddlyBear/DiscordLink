@@ -5,5 +5,5 @@ api-version: 1.17
 authors: [ TheCuddlyBear ]
 description: Link your minecraft chat with a discord channel
 commands:
-  webhook:
-    description: Sets the discord webhook url
+  dlink:
+    description: Main command of the plugin.
