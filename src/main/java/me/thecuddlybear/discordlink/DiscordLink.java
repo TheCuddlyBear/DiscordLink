@@ -2,6 +2,8 @@ package me.thecuddlybear.discordlink;
 
 import club.minnced.discord.webhook.WebhookClient;
 import club.minnced.discord.webhook.WebhookClientBuilder;
+import me.thecuddlybear.discordlink.commands.SetChannelId;
+import me.thecuddlybear.discordlink.commands.SetDiscordToken;
 import me.thecuddlybear.discordlink.commands.SetWebhookUrl;
 import me.thecuddlybear.discordlink.events.GuildMessageReceived;
 import me.thecuddlybear.discordlink.events.onPlayerDeath;
@@ -22,15 +24,14 @@ public final class DiscordLink extends JavaPlugin {
     private static WebhookClientBuilder webhookBuilder = null;
     private static WebhookClient webhookClient = null;
     private static JDA jda = null;
-    private static JsonConfig config = null;
-
 
     @Override
     public void onEnable() {
         // Plugin startup logic
         instance = this;
-        // getCommand("webhook").setExecutor(new SetWebhookUrl());
-        config = new JsonConfig(new File("config.json"));
+        getCommand("webhook").setExecutor(new SetWebhookUrl());
+        getCommand("dtoken").setExecutor(new SetDiscordToken());
+        getCommand("channelid").setExecutor(new SetChannelId());
         getConfig().options().copyDefaults();
         saveDefaultConfig();
         getServer().getPluginManager().registerEvents(new onPlayerDeath(), this);
@@ -86,10 +87,6 @@ public final class DiscordLink extends JavaPlugin {
 
     public static JDA getJDA(){
         return jda;
-    }
-
-    public static JsonConfig getConfiguration(){
-        return config;
     }
 
     @Override

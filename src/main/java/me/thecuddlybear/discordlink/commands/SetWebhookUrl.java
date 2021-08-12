@@ -24,6 +24,8 @@ public class SetWebhookUrl implements CommandExecutor {
                 else{
                     // change config option
                     DiscordLink.getInstance().getConfig().set("webhookURL", args[0]);
+                    DiscordLink.getInstance().saveConfig();
+                    DiscordLink.getInstance().reloadConfig();
                     player.sendMessage("Changed the webhook url to: " + args[0]);
                 }
             }
