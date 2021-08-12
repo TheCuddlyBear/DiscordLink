@@ -49,7 +49,7 @@ public class DiscordLinkCommand implements CommandExecutor {
                             if(args.length == 1){
                                 player.sendMessage(ChatColor.DARK_PURPLE + "DiscordLink » " + ChatColor.GRAY + "You need provide a valid Discord bot token!");
                                 break;
-                            }else if(!args[0].length() == 59)){
+                            }else if(args[0].length() != 59){
                                 player.sendMessage(ChatColor.DARK_PURPLE + "DiscordLink » " + ChatColor.GRAY + "You need provide a valid Discord bot token!");
                                 break;
                             }else{
@@ -63,7 +63,6 @@ public class DiscordLinkCommand implements CommandExecutor {
                             player.sendMessage(ChatColor.DARK_PURPLE + "DiscordLink » " + ChatColor.GRAY + "Invalid permissions.");
                             break;
                         }
-                        break;
                     case "channelid":
                         if(player.hasPermission("discordlink.channelid")){
                             player.sendMessage(ChatColor.DARK_PURPLE + "DiscordLink » " + ChatColor.GRAY + "Invalid permissions.");
