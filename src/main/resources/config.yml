@@ -1,4 +1,5 @@
 webhookURL: ""
 discordToken: ""
 channelID: ""
-chatLayout: "&d[Discord] &f{username} > {message}"
+chatLayout: "&d[Discord] &f{username} > {message}" # Placeholders: {username} for discord username and {message} for the message
+
