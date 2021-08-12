@@ -6,7 +6,7 @@
 
     <groupId>me.thecuddlybear</groupId>
     <artifactId>DiscordLink</artifactId>
-    <version>1.0-alpha</version>
+    <version>1.1-beta</version>
     <packaging>jar</packaging>
 
     <name>DiscordLink</name>
@@ -44,6 +44,28 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <version>3.1.0</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <createDependencyReducedPom>false</createDependencyReducedPom>
+                            <relocations>
+                                <relocation>
+                                    <pattern>xyz.theprogramsrc.supercoreapi</pattern>
+                                    <shadedPattern>me.thecuddlybear.discordlink.supercoreapi</shadedPattern>
+                                </relocation>
+                            </relocations>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
         <resources>
             <resource>
@@ -62,6 +84,10 @@
         <repository>
             <id>spigotmc-repo</id>
             <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+        </repository>
+        <repository>
+            <id>theprogramsrc</id>
+            <url>https://repo.theprogramsrc.xyz/repository/maven-public</url>
         </repository>
         <repository>
             <id>sonatype</id>
@@ -99,6 +125,13 @@
                     <artifactId>opus-java</artifactId>
                 </exclusion>
             </exclusions>
+        </dependency>
+        <!-- SuperCoreAPI -->
+        <dependency>
+            <groupId>xyz.theprogramsrc</groupId>
+            <artifactId>SuperCoreAPI</artifactId>
+            <version>5.0.4</version> <!-- Make sure to replace {LAST VERSION} with the latest version -->
+            <scope>compile</scope>
         </dependency>
         <dependency>
             <groupId>club.minnced</groupId>

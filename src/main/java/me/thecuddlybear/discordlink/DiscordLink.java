@@ -11,8 +11,10 @@ import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
+import xyz.theprogramsrc.supercoreapi.global.files.JsonConfig;
 
 import javax.security.auth.login.LoginException;
+import java.io.File;
 
 public final class DiscordLink extends JavaPlugin {
 
@@ -20,6 +22,7 @@ public final class DiscordLink extends JavaPlugin {
     private static WebhookClientBuilder webhookBuilder = null;
     private static WebhookClient webhookClient = null;
     private static JDA jda = null;
+    private static JsonConfig config = null;
 
 
     @Override
@@ -27,6 +30,7 @@ public final class DiscordLink extends JavaPlugin {
         // Plugin startup logic
         instance = this;
         // getCommand("webhook").setExecutor(new SetWebhookUrl());
+        config = new JsonConfig(new File("config.json"));
         getConfig().options().copyDefaults();
         saveDefaultConfig();
         getServer().getPluginManager().registerEvents(new onPlayerDeath(), this);
@@ -82,6 +86,10 @@ public final class DiscordLink extends JavaPlugin {
 
     public static JDA getJDA(){
         return jda;
+    }
+
+    public static JsonConfig getConfiguration(){
+        return config;
     }
 
     @Override
