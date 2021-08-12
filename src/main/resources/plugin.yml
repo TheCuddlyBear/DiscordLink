@@ -7,3 +7,4 @@ description: Link your minecraft chat with a discord channel
 commands:
   dlink:
     description: Main command of the plugin.
+    aliases: ["discordlink"]
