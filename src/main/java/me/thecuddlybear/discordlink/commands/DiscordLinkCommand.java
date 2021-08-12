@@ -28,25 +28,35 @@ public class DiscordLinkCommand implements CommandExecutor {
                     case "webhook":
                         if(player.hasPermission("discordlink.webhook")){
                             if(args.length == 1){
-                                player.sendMessage(ChatColor.DARK_AQUA + "BearEnchantment » " + ChatColor.GRAY + "You need provide a valid Discord webhook URL!");
+                                player.sendMessage(ChatColor.DARK_PURPLE + "BearEnchantment » " + ChatColor.GRAY + "You need provide a valid Discord webhook URL!");
                                 break;
                             }else if(!args[0].startsWith("https://discordapp.com/api/webhooks/")){
-                                player.sendMessage(ChatColor.DARK_AQUA + "BearEnchantment » " + ChatColor.GRAY + "You need provide a valid Discord webhook URL!");
+                                player.sendMessage(ChatColor.DARK_PURPLE + "BearEnchantment » " + ChatColor.GRAY + "You need provide a valid Discord webhook URL!");
                                 break;
                             }else{
                                 DiscordLink.getInstance().getConfig().set("webhookURL", args[0]);
                                 DiscordLink.getInstance().saveConfig();
                                 DiscordLink.getInstance().reloadConfig();
-                                player.sendMessage(ChatColor.DARK_AQUA + "BearEnchantment » " + ChatColor.GRAY + "Succesfully changed the webhook URL!");
+                                player.sendMessage(ChatColor.DARK_PURPLE + "BearEnchantment » " + ChatColor.GRAY + "Succesfully changed the webhook URL!");
                                 break;
                             }
                         }else{
-                            player.sendMessage(ChatColor.DARK_AQUA + "DiscordLink » " + ChatColor.GRAY + "Invalid permission.");
+                            player.sendMessage(ChatColor.DARK_PURPLE + "DiscordLink » " + ChatColor.GRAY + "Invalid permission.");
                             break;
                         }
                     case "token":
+                        if(player.hasPermission("discordlink.token")){
+
+                        }else{
+                            player.sendMessage(ChatColor.DARK_PURPLE + "DiscordLink » " + ChatColor.GRAY + "Invalid permission.");
+                            break;
+                        }
                         break;
                     case "channelid":
+                        if(player.hasPermission("discordlink.channelid")){
+                            player.sendMessage(ChatColor.DARK_PURPLE + "DiscordLink » " + ChatColor.GRAY + "Invalid permission.");
+                            break;
+                        }
                         break;
                 }
             }
