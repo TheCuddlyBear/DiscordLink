@@ -8,6 +8,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
+import java.util.Objects;
+
 public class onPlayerMessage implements Listener {
 
     @EventHandler
@@ -17,7 +19,7 @@ public class onPlayerMessage implements Listener {
         String avatar = "https://minotar.net/avatar/" + username;
         String message = evt.getMessage();
 
-        try(WebhookClient client = WebhookClient.withUrl(DiscordLink.getInstance().getConfig().getString("webhookURL"))){
+        try(WebhookClient client = WebhookClient.withUrl(Objects.requireNonNull(DiscordLink.getInstance().getConfig().getString("webhookURL")))){
             WebhookMessageBuilder messageBuilder = new WebhookMessageBuilder();
             messageBuilder.setUsername(username);
             messageBuilder.setAvatarUrl(avatar);

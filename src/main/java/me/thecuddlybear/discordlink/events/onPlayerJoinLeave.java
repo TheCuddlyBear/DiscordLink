@@ -9,6 +9,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
+import java.util.Objects;
+
 public class onPlayerJoinLeave implements Listener {
 
     @EventHandler
@@ -16,7 +18,7 @@ public class onPlayerJoinLeave implements Listener {
         Player player = event.getPlayer();
         String username = player.getDisplayName();
         String avatar = "https://minotar.net/avatar/" + player.getName();
-        try(WebhookClient client = WebhookClient.withUrl(DiscordLink.getInstance().getConfig().getString("webhookURL"))){
+        try(WebhookClient client = WebhookClient.withUrl(Objects.requireNonNull(DiscordLink.getInstance().getConfig().getString("webhookURL")))){
             WebhookMessageBuilder messageBuilder = new WebhookMessageBuilder();
             messageBuilder.setUsername("Minecraft Server");
             messageBuilder.setAvatarUrl(avatar);
@@ -30,7 +32,7 @@ public class onPlayerJoinLeave implements Listener {
         Player player = event.getPlayer();
         String username = player.getDisplayName();
         String avatar = "https://minotar.net/avatar/" + player.getName();
-        try(WebhookClient client = WebhookClient.withUrl(DiscordLink.getInstance().getConfig().getString("webhookURL"))){
+        try(WebhookClient client = WebhookClient.withUrl(Objects.requireNonNull(DiscordLink.getInstance().getConfig().getString("webhookURL")))){
             WebhookMessageBuilder messageBuilder = new WebhookMessageBuilder();
             messageBuilder.setUsername("Minecraft Server");
             messageBuilder.setAvatarUrl(avatar);

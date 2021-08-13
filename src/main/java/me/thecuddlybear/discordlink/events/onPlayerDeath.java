@@ -8,6 +8,8 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 
+import java.util.Objects;
+
 public class onPlayerDeath implements Listener {
 
     @EventHandler
@@ -16,7 +18,7 @@ public class onPlayerDeath implements Listener {
             String deathMessage = event.getDeathMessage();
             Player player = (Player) event.getEntity();
             String avatar = "https://minotar.net/avatar/" + player.getName();
-            try(WebhookClient client = WebhookClient.withUrl(DiscordLink.getInstance().getConfig().getString("webhookURL"))){
+            try(WebhookClient client = WebhookClient.withUrl(Objects.requireNonNull(DiscordLink.getInstance().getConfig().getString("webhookURL")))){
                 WebhookMessageBuilder messageBuilder = new WebhookMessageBuilder();
                 messageBuilder.setUsername("Minecraft Server");
                 messageBuilder.setAvatarUrl(avatar);
