@@ -21,7 +21,6 @@ public class DiscordLinkCommand implements CommandExecutor {
                 player.sendMessage(ChatColor.DARK_PURPLE + "/dlink" + " webhook <token>" + ChatColor.GRAY + " - lists all enchantments");
                 player.sendMessage(ChatColor.DARK_PURPLE + "/dlink" + " token <token>" + ChatColor.GRAY + " - displays this page");
                 player.sendMessage(ChatColor.DARK_PURPLE + "/dlink" + " channelid <id>" + ChatColor.GRAY + " - checks enchantments on main hand");
-                player.sendMessage(ChatColor.GRAY + "More commands will be added soon\u2122!");
             }else{
                 String subCmd = args[0];
                 switch(subCmd){
