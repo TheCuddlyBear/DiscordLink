@@ -29,10 +29,6 @@ public class DiscordLinkCommand implements CommandExecutor {
                             if(args.length == 1){
                                 player.sendMessage(ChatColor.DARK_PURPLE + "DiscordLink » " + ChatColor.GRAY + "You need provide a valid Discord webhook URL!");
                                 break;
-                            }else if(!args[1].startsWith("https://discordapp.com/api/webhooks/")){
-                                DiscordLink.getInstance().getLogger().info(args[1]);
-                                player.sendMessage(ChatColor.DARK_PURPLE + "DiscordLink » " + ChatColor.GRAY + "You need provide a valid Discord webhook URL!");
-                                break;
                             }else{
                                 DiscordLink.getInstance().getConfig().set("webhookURL", args[1]);
                                 DiscordLink.getInstance().saveConfig();
@@ -49,14 +45,11 @@ public class DiscordLinkCommand implements CommandExecutor {
                             if(args.length == 1){
                                 player.sendMessage(ChatColor.DARK_PURPLE + "DiscordLink » " + ChatColor.GRAY + "You need provide a valid Discord bot token!");
                                 break;
-                            }else if(args[0].length() != 59){
-                                player.sendMessage(ChatColor.DARK_PURPLE + "DiscordLink » " + ChatColor.GRAY + "You need provide a valid Discord bot token!");
-                                break;
                             }else{
                                 DiscordLink.getInstance().getConfig().set("discordToken", args[1]);
                                 DiscordLink.getInstance().saveConfig();
                                 DiscordLink.getInstance().reloadConfig();
-                                player.sendMessage(ChatColor.DARK_PURPLE + "DiscordLink » " + ChatColor.GRAY + "Succesfully changed the webhook URL!");
+                                player.sendMessage(ChatColor.DARK_PURPLE + "DiscordLink » " + ChatColor.GRAY + "Succesfully changed the bot token!");
                                 break;
                             }
                         }else{
@@ -65,10 +58,20 @@ public class DiscordLinkCommand implements CommandExecutor {
                         }
                     case "channelid":
                         if(player.hasPermission("discordlink.channelid")){
+                            if(args.length == 1){
+                                player.sendMessage(ChatColor.DARK_PURPLE + "DiscordLink » " + ChatColor.GRAY + "You need provide a valid Discord channel ID!");
+                                break;
+                            }else{
+                                DiscordLink.getInstance().getConfig().set("channelID", args[1]);
+                                DiscordLink.getInstance().saveConfig();
+                                DiscordLink.getInstance().reloadConfig();
+                                player.sendMessage(ChatColor.DARK_PURPLE + "DiscordLink » " + ChatColor.GRAY + "Succesfully changed the channel ID!");
+                                break;
+                            }
+                        }else{
                             player.sendMessage(ChatColor.DARK_PURPLE + "DiscordLink » " + ChatColor.GRAY + "Invalid permissions.");
                             break;
                         }
-                        break;
                 }
             }
 
