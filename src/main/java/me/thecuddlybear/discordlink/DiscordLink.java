@@ -30,8 +30,7 @@ public final class DiscordLink extends JavaPlugin {
         getCommand("dlink").setTabCompleter(new DiscordLinkTabCompleter());
         getConfig().options().copyDefaults();
         saveDefaultConfig();
-        getLogger().info(getConfig().getString("webhookURL"));
-        if(getConfig().getString("webhookURL").startsWith("https://discordapp.com/api/")){
+        if(getConfig().getString("webhookURL").startsWith("https://discord.com/api/webhooks/")){
             getServer().getPluginManager().registerEvents(new onPlayerMessage(), this);
             getServer().getPluginManager().registerEvents(new onPlayerDeath(), this);
             getServer().getPluginManager().registerEvents(new onPlayerJoinLeave(), this);
@@ -39,7 +38,7 @@ public final class DiscordLink extends JavaPlugin {
             new BukkitRunnable() {
                 @Override
                 public void run() {
-                    if(getConfig().get("webhookURL").toString().startsWith("https://discordapp.com/api/")){
+                    if(getConfig().get("webhookURL").toString().startsWith("https://discord.com/api/webhooks/")){
                         getServer().getPluginManager().registerEvents(new onPlayerMessage(), DiscordLink.getPlugin(DiscordLink.class));
                     }
                 }

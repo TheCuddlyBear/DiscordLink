@@ -29,6 +29,9 @@ public class DiscordLinkCommand implements CommandExecutor {
                             if(args.length == 1){
                                 player.sendMessage(ChatColor.DARK_PURPLE + "DiscordLink » " + ChatColor.GRAY + "You need provide a valid Discord webhook URL!");
                                 break;
+                            }else if(!args[1].startsWith("https://discord.com/api/webhooks/")){
+                                player.sendMessage(ChatColor.DARK_PURPLE + "DiscordLink » " + ChatColor.GRAY + "You need provide a valid Discord webhook URL!");
+                                break;
                             }else{
                                 DiscordLink.getInstance().getConfig().set("webhookURL", args[1]);
                                 DiscordLink.getInstance().saveConfig();
