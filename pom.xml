@@ -44,28 +44,6 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>3.1.0</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
-                        <configuration>
-                            <createDependencyReducedPom>false</createDependencyReducedPom>
-                            <relocations>
-                                <relocation>
-                                    <pattern>xyz.theprogramsrc.supercoreapi</pattern>
-                                    <shadedPattern>me.thecuddlybear.discordlink.supercoreapi</shadedPattern>
-                                </relocation>
-                            </relocations>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
         </plugins>
         <resources>
             <resource>
@@ -126,22 +104,10 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <!-- SuperCoreAPI -->
-        <dependency>
-            <groupId>xyz.theprogramsrc</groupId>
-            <artifactId>SuperCoreAPI</artifactId>
-            <version>5.0.4</version> <!-- Make sure to replace {LAST VERSION} with the latest version -->
-            <scope>compile</scope>
-        </dependency>
         <dependency>
             <groupId>club.minnced</groupId>
             <artifactId>discord-webhooks</artifactId>
             <version>0.5.8</version>
-        </dependency>
-        <dependency>
-            <groupId>com.github.thatsmusic99</groupId>
-            <artifactId>ConfigurationMaster</artifactId>
-            <version>v1.0.1</version>
         </dependency>
     </dependencies>
 </project>
