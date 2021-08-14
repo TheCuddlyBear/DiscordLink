@@ -14,7 +14,8 @@ public class onPlayerMessage implements Listener {
 
     @EventHandler
     public void onPlayerMessage(AsyncPlayerChatEvent evt){
-        Player player = evt.getPlayer();
+        evt.setCancelled(true);
+        /*Player player = evt.getPlayer();
         String username = player.getName();
         String avatar = "https://minotar.net/avatar/" + username;
         String message = evt.getMessage();
@@ -25,7 +26,7 @@ public class onPlayerMessage implements Listener {
             messageBuilder.setAvatarUrl(avatar);
             messageBuilder.setContent(message);
             client.send(messageBuilder.build());
-        }
+        }*/
     }
 
 
