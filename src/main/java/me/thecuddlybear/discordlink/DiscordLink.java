@@ -30,6 +30,7 @@ public final class DiscordLink extends JavaPlugin {
         getCommand("dlink").setTabCompleter(new DiscordLinkTabCompleter());
         getConfig().options().copyDefaults();
         saveDefaultConfig();
+        getLogger().info(getConfig().getString("webhookURL"));
         if(getConfig().getString("webhookURL").startsWith("https://discordapp.com/api/")){
             getServer().getPluginManager().registerEvents(new onPlayerMessage(), this);
             getServer().getPluginManager().registerEvents(new onPlayerDeath(), this);
